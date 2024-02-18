@@ -9,7 +9,7 @@ import { CreateUserDto, LoginUserDto, UpdateUserDto } from './session.types';
 export async function currentUserQuery(signal?: AbortSignal) {
   return createJsonQuery({
     request: {
-      url: baseUrl('/user'),
+      url: baseUrl('/users'),
       method: 'GET',
       headers: { ...authorizationHeader() },
     },
@@ -52,7 +52,7 @@ export async function loginUserMutation(params: { user: LoginUserDto }) {
 export async function updateUserMutation(params: { user: UpdateUserDto }) {
   return createJsonMutation({
     request: {
-      url: baseUrl('/user'),
+      url: baseUrl('/users'),
       method: 'PUT',
       headers: { ...authorizationHeader() },
       body: JSON.stringify({ user: params.user }),
